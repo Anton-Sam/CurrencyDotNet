@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyDotNet.Common", "CurrencyDotNet.Common\CurrencyDotNet.Common.csproj", "{33552B03-75BF-401E-B813-F0EE3BB8B1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyDotNet.RestClient", "CurrencyDotNet.RestClient\CurrencyDotNet.RestClient.csproj", "{B435476D-30D1-45D8-9415-BA239D9550BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyDotNet.WebSocketClient", "CurrencyDotNet.WebSocketClient\CurrencyDotNet.WebSocketClient.csproj", "{F0EB974C-10E7-4444-BC2F-A17415C1559B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33552B03-75BF-401E-B813-F0EE3BB8B1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33552B03-75BF-401E-B813-F0EE3BB8B1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33552B03-75BF-401E-B813-F0EE3BB8B1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33552B03-75BF-401E-B813-F0EE3BB8B1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B435476D-30D1-45D8-9415-BA239D9550BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B435476D-30D1-45D8-9415-BA239D9550BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B435476D-30D1-45D8-9415-BA239D9550BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B435476D-30D1-45D8-9415-BA239D9550BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0EB974C-10E7-4444-BC2F-A17415C1559B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0EB974C-10E7-4444-BC2F-A17415C1559B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0EB974C-10E7-4444-BC2F-A17415C1559B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0EB974C-10E7-4444-BC2F-A17415C1559B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
