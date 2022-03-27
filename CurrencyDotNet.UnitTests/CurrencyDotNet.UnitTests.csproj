@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CurrencyDotNet.Common\CurrencyDotNet.Common.csproj" />
+  </ItemGroup>
+
 </Project>
