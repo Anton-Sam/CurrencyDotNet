@@ -1,0 +1,14 @@
+﻿using System.Text;
+
+namespace CurrencyDotNet.RestClient.Models.Requests
+{
+    public class GetTicker24hrRequest
+    {
+        public string Symbol { get; set; }
+
+        public override string ToString()
+            => new StringBuilder()
+            .Append($"symbol={Symbol}")
+            .ToString();
+    }
+}
