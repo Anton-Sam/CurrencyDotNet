@@ -103,11 +103,6 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public void GetTicker24hr()
-        {
-            throw new NotImplementedException();
-        }
-
         public void GetTime()
         {
             throw new NotImplementedException();
@@ -159,6 +154,16 @@ namespace CurrencyDotNet.RestClient
         }
 
         public void UpdatePosition()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CallResult<IEnumerable<Ticker>>> GetTickers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CallResult<Ticker>> GetTicker(string symbol)
         {
             throw new NotImplementedException();
         }
