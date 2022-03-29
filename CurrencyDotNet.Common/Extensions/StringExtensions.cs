@@ -1,6 +1,6 @@
-﻿using Ardalis.GuardClauses;
+﻿using System.Text;
 using System.Security.Cryptography;
-using System.Text;
+using Ardalis.GuardClauses;
 
 namespace CurrencyDotNet.Common.Extensions
 {
@@ -26,6 +26,20 @@ namespace CurrencyDotNet.Common.Extensions
             byte[] bytes = cryptographer.ComputeHash(messageBytes);
 
             return BitConverter.ToString(bytes).Replace("-", "").ToLower();
+        }
+
+        /// <summary>
+        /// Returns the key value of the request Uri parameter
+        /// </summary>
+        /// <param name="value">Input value</param>
+        /// <returns>Key value of the request Uri parameter</returns>
+        public static string GetUriRequestParameterKey(this string value)
+        {
+            if (value.Equals("ApiKey")) return "X-MBX-APIKEY";
+
+            var firstPartLower = char.ToLower(value[0]);
+            var secondPart = value[1..];
+            return $"{firstPartLower}{secondPart}";
         }
     }
 }
