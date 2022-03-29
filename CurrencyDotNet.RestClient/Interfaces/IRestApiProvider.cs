@@ -1,4 +1,6 @@
-﻿namespace CurrencyDotNet.RestClient.Interfaces
+﻿using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
+
+namespace CurrencyDotNet.RestClient.Interfaces
 {
     /// <summary>
     /// Provider for http requests
@@ -12,7 +14,7 @@
         /// <param name="requestModel">Request model</param>
         /// <param name="token">Cancellation token</param>
         /// <returns>Response object</returns>
-        public Task<T> GetRequestAsync<T>(IRequestModel requestModel, CancellationToken token);
+        public Task<CallResult<T>> GetRequestAsync<T>(IRequestModel requestModel, CancellationToken token);
 
         /// <summary>
         /// Send http POST request
@@ -21,6 +23,6 @@
         /// <param name="requestModel">Request model</param>
         /// <param name="token">Cancellation token</param>
         /// <returns>Response object</returns>
-        public Task<T> PostRequestAsync<T>(IRequestModel requestModel, CancellationToken token);
+        public Task<CallResult<T>> PostRequestAsync<T>(IRequestModel requestModel, CancellationToken token);
     }
 }

@@ -1,9 +1,16 @@
-﻿namespace CurrencyDotNet.RestClient.Interfaces
+﻿using CurrencyDotNet.RestClient.Models.Responses;
+using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
+
+namespace CurrencyDotNet.RestClient.Interfaces
 {
     internal interface ICurrencyRestClient
     {
         void GetAccountInfo();
-        void GetAggregatedTradesHistory();
+        Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(int endTime, 
+            int limit, 
+            int startTime, 
+            string symbol, 
+            CancellationToken cancellationToken);
         void GetCurrencies();
         void GetDepositAddress();
         void GetDeposits();
