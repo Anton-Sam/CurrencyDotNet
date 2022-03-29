@@ -5,6 +5,10 @@ namespace CurrencyDotNet.RestClient.Models.Requests.Abstractions
 {
     internal class RequestModel
     {
+        /// <summary>
+        /// Takes all the properties of an object and the values ​​of those properties, providing them as a request Uri parameter.
+        /// </summary>
+        /// <returns>Parameter value for request Uri</returns>
         public string GetQueryString()
         {
             Type myType = this.GetType();

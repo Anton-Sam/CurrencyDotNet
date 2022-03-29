@@ -1,5 +1,8 @@
 ﻿namespace CurrencyDotNet.Common.Models
 {
+    /// <summary>
+    /// Designed to store the key and value of the request Uri parameter
+    /// </summary>
     public class UriRequestParameterKeyValueModel
     {
         public string Key { get; set; }
