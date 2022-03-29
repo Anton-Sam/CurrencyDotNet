@@ -3,14 +3,14 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetTicker24hrRequest : IBaseRequest
+    public class GetTicker24hrRequest : IRequestModel
     {
         /// <summary>
         /// 24 hour rolling window price change statistics. Careful when accessing this with no symbol.
         /// </summary>
         public string Symbol { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"symbol={Symbol}")
             .GetQuery();

@@ -3,7 +3,7 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetOrderBookRequest : IBaseRequest
+    public class GetOrderBookRequest : IRequestModel
     {
         /// <summary>
         /// Order book.
@@ -11,7 +11,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int Limit { get; set; }
         public string Symbol { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"limit={Limit}")
             .AddValue($"symbol={Symbol}")

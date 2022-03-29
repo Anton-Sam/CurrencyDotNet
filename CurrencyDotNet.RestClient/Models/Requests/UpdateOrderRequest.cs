@@ -6,7 +6,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// <summary>
     /// Edit current leverage orders by changing take profit and stop loss levels.
     /// </summary>
-    public class UpdateOrderRequest : IBaseRequest
+    public class UpdateOrderRequest : IRequestModel
     {
         public int ExpireTimestamp { get; set; }
         public bool GuaranteedStopLoss { get; set; }
@@ -16,10 +16,10 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public decimal StopLoss { get; set; }
         public decimal TakeProfit { get; set; }
         public int Timestamp { get; set; }
-        public string X_MBX_APIKEY { get; set; }
+        public string ApiKey { get; set; }
         public string Signature { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"expireTimestamp={ExpireTimestamp}")
             .AddValue($"guaranteedStopLoss={GuaranteedStopLoss}")
@@ -29,7 +29,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests
             .AddValue($"stopLoss={StopLoss}")
             .AddValue($"takeProfit={TakeProfit}")
             .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"X-MBX-APIKEY={ApiKey}")
             .AddValue($"signature={Signature}")
             .GetQuery();
     }

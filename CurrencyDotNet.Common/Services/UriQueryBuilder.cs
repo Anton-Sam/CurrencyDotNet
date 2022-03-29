@@ -5,11 +5,9 @@ namespace CurrencyDotNet.Common.Services
     /// <summary>
     /// Creates a final endpoint for the Rest API
     /// </summary>
-    public class UriQueryBuilder : IUriQueryBuilder, IDisposable
+    public class UriQueryBuilder : IUriQueryBuilder
     {
         private string _query;
-
-        public void Dispose() => _query = null;
 
         /// <summary>
         /// Returns final uri query for API endpoint

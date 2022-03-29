@@ -3,14 +3,14 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetTradingLimitsRequest : IBaseRequest
+    public class GetTradingLimitsRequest : IRequestModel
     {
         /// <summary>
         /// Get all system limits.
         /// </summary>
         public string Symbol { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"symbol={Symbol}")
             .GetQuery();

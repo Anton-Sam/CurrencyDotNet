@@ -3,7 +3,7 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetTradesRequest : IBaseRequest
+    public class GetTradesRequest : IRequestModel
     {
         /// <summary>
         /// Get trades for a specific account and symbol.
@@ -11,18 +11,18 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }
-        public string X_MBX_APIKEY { get; set; }
+        public string ApiKey { get; set; }
         public int EndTime { get; set; }
         public int Limit { get; set; }
         public string Signature { get;set; }
         public int StartTime { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"recvWindow={RecvWindow}")
             .AddValue($"symbol={Symbol}")
             .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"X-MBX-APIKEY={ApiKey}")
             .AddValue($"endTime={EndTime}")
             .AddValue($"limit={Limit}")
             .AddValue($"signature={Signature}")

@@ -6,21 +6,21 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// <summary>
     /// Cancel an active order within exchange and leverage trading modes.
     /// </summary>
-    public class CancelOrderRequest : IBaseRequest
+    public class CancelOrderRequest : IRequestModel
     {
         public string OrderId { get; set; }
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
-        public string X_MBX_APIKEY { get; set; }
+        public string ApiKey { get; set; }
         public string Signature { get; set; }
         public string Symbol { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"orderId={OrderId}")
             .AddValue($"recvWindow={RecvWindow}")
             .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"X-MBX-APIKEY={ApiKey}")
             .AddValue($"signature={Signature}")
             .AddValue($"symbol={Symbol}")
             .GetQuery();

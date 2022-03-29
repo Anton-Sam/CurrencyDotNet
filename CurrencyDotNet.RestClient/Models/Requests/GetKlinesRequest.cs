@@ -3,7 +3,7 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetKlinesRequest : IBaseRequest
+    public class GetKlinesRequest : IRequestModel
     {
         /// <summary>
         /// Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
@@ -15,7 +15,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public string Symbol { get; set; }
         public string Type { get; set; }
 
-        public override string ToString()
+        public string GetQueryString()
             => new UriQueryBuilder()
             .AddValue($"endTime={EndTime}")
             .AddValue($"interval ={Interval}")
