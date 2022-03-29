@@ -1,9 +1,13 @@
-﻿using System.Text;
+﻿using CurrencyDotNet.Common.Services;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetOpenOrdersRequest
+    public class GetOpenOrdersRequest : IBaseRequest
     {
+        /// <summary>
+        /// Get all open orders within exchange and leverage trading modes on a symbol. Careful when accessing this with no symbol.
+        /// </summary>
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }
@@ -11,16 +15,12 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public string Signature { get; set; }
 
         public override string ToString()
-            => new StringBuilder()
-            .Append($"recvWindow={RecvWindow}")
-            .Append('&')
-            .Append($"symbol={Symbol}")
-            .Append('&')
-            .Append($"timestamp={Timestamp}")
-            .Append('&')
-            .Append($"X-MBX-APIKEY={X_MBX_APIKEY}")
-            .Append('&')
-            .Append($"signature={Signature}")
-            .ToString();
+            => new UriQueryBuilder()
+            .AddValue($"recvWindow={RecvWindow}")
+            .AddValue($"symbol={Symbol}")
+            .AddValue($"timestamp={Timestamp}")
+            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"signature={Signature}")
+            .GetQuery();
     }
 }

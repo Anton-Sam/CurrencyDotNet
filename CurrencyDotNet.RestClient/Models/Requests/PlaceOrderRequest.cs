@@ -1,10 +1,15 @@
-﻿using System.Text;
+﻿using CurrencyDotNet.Common.Services;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class PlaceOrderRequest
+    public class PlaceOrderRequest : IBaseRequest
     {
-        public string AccontId { get; set; }
+        /// <summary>
+        /// To create a market or limit order in the exchange trading mode, and market, limit or stop order in the leverage trading mode.\n
+        /// Please note that to open an order within the ‘leverage’ trading mode symbolLeverage should be used and additional accountId parameter should be mentioned in the request.
+        /// </summary>
+        public string AccountId { get; set; }
         public int ExpireTimestamp { get; set; }
         public bool GuaranteedStopLoss { get; set; }
         public int Leverage { get; set; }
@@ -22,38 +27,23 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public string Signature { get; set; }
 
         public override string ToString()
-            => new StringBuilder()
-            .Append($"accountId={AccontId}")
-            .Append('&')
-            .Append($"expireTimestamp={ExpireTimestamp}")
-            .Append('&')
-            .Append($"guaranteedStopLoss={GuaranteedStopLoss}")
-            .Append('&')
-            .Append($"leverage={Leverage}")
-            .Append('&')
-            .Append($"newOrderRespType={NewOrderRespType}")
-            .Append('&')
-            .Append($"price={Price}")
-            .Append('&')
-            .Append($"quantity={Quantity}")
-            .Append('&')
-            .Append($"recvWindow={RecvWindow}")
-            .Append('&')
-            .Append($"side={Side}")
-            .Append('&')
-            .Append($"stopLoss={StopLoss}")
-            .Append('&')
-            .Append($"symbol={Symbol}")
-            .Append('&')
-            .Append($"takeProfit={TakeProfit}")
-            .Append('&')
-            .Append($"timestamp={Timestamp}")
-            .Append('&')
-            .Append($"type={Type}")
-            .Append('&')
-            .Append($"X-MBX-APIKEY={X_MBX_APIKEY}")
-            .Append('&')
-            .Append($"signature={Signature}")
-            .ToString();
+            => new UriQueryBuilder()
+            .AddValue($"accountId={AccountId}")
+            .AddValue($"expireTimestamp={ExpireTimestamp}")
+            .AddValue($"guaranteedStopLoss={GuaranteedStopLoss}")
+            .AddValue($"leverage={Leverage}")
+            .AddValue($"newOrderRespType={NewOrderRespType}")
+            .AddValue($"price={Price}")
+            .AddValue($"quantity={Quantity}")
+            .AddValue($"recvWindow={RecvWindow}")
+            .AddValue($"side={Side}")
+            .AddValue($"stopLoss={StopLoss}")
+            .AddValue($"symbol={Symbol}")
+            .AddValue($"takeProfit={TakeProfit}")
+            .AddValue($"timestamp={Timestamp}")
+            .AddValue($"type={Type}")
+            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"signature={Signature}")
+            .GetQuery();
     }
 }

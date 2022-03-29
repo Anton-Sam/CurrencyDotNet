@@ -1,8 +1,12 @@
-﻿using System.Text;
+﻿using CurrencyDotNet.Common.Services;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class UpdatePositionRequest
+    /// <summary>
+    /// To edit current leverage trade by changing stop loss and take profit levels.
+    /// </summary>
+    public class UpdatePositionRequest : IBaseRequest
     {
         public bool GuaranteedStopLoss { get; set; }
         public string PositionId { get; set; }
@@ -14,22 +18,15 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public string Signature { get; set; }
 
         public override string ToString()
-            => new StringBuilder()
-            .Append($"guaranteedStopLoss={GuaranteedStopLoss}")
-            .Append("&")
-            .Append($"positionId={PositionId}")
-            .Append("&")
-            .Append($"recvWindow={RecvWindow}")
-            .Append("&")
-            .Append($"stopLoss={StopLoss}")
-            .Append("&")
-            .Append($"takeProfit={TakeProfit}")
-            .Append("&")
-            .Append($"timestamp={Timestamp}")
-            .Append("&")
-            .Append($"X-MBX-APIKEY={X_MBX_APIKEY}")
-            .Append("&")
-            .Append($"signature={Signature}")
-            .ToString();
+            => new UriQueryBuilder()
+            .AddValue($"guaranteedStopLoss={GuaranteedStopLoss}")
+            .AddValue($"positionId={PositionId}")
+            .AddValue($"recvWindow={RecvWindow}")
+            .AddValue($"stopLoss={StopLoss}")
+            .AddValue($"takeProfit={TakeProfit}")
+            .AddValue($"timestamp={Timestamp}")
+            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"signature={Signature}")
+            .GetQuery();
     }
 }

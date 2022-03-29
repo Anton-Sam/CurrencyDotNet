@@ -1,8 +1,12 @@
-﻿using System.Text;
+﻿using CurrencyDotNet.Common.Services;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetDepositsRequest
+    /// <summary>
+    /// Get deposits for user.
+    /// </summary>
+    public class GetDepositsRequest : IBaseRequest
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
@@ -13,18 +17,13 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int StartTime { get; set; }
 
         public override string ToString()
-            => new StringBuilder()
-            .Append($"recvWindow={RecvWindow}")
-            .Append('&')
-            .Append($"timestamp={Timestamp}")
-            .Append('&')
-            .Append($"X-MBX-APIKEY={X_MBX_APIKEY}")
-            .Append('&')
-            .Append($"endTime={EndTime}")
-            .Append('&')
-            .Append($"signature={Signature}")
-            .Append('&')
-            .Append($"startTime={StartTime}")          
-            .ToString();
+            => new UriQueryBuilder()
+            .AddValue($"recvWindow={RecvWindow}")
+            .AddValue($"timestamp={Timestamp}")
+            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"endTime={EndTime}")
+            .AddValue($"signature={Signature}")
+            .AddValue($"startTime={StartTime}")          
+            .GetQuery();
     }
 }

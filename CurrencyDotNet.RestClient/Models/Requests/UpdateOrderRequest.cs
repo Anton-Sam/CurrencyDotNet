@@ -1,8 +1,12 @@
-﻿using System.Text;
+﻿using CurrencyDotNet.Common.Services;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class UpdateOrderRequest
+    /// <summary>
+    /// Edit current leverage orders by changing take profit and stop loss levels.
+    /// </summary>
+    public class UpdateOrderRequest : IBaseRequest
     {
         public int ExpireTimestamp { get; set; }
         public bool GuaranteedStopLoss { get; set; }
@@ -16,26 +20,17 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public string Signature { get; set; }
 
         public override string ToString()
-            => new StringBuilder()
-            .Append($"expireTimestamp={ExpireTimestamp}")
-            .Append("&")
-            .Append($"guaranteedStopLoss={GuaranteedStopLoss}")
-            .Append("&")
-            .Append($"newPrice={NewPrice}")
-            .Append("&")
-            .Append($"orderId={OrderId}")
-            .Append("&")
-            .Append($"recvWindow={RecvWindow}")
-            .Append("&")
-            .Append($"stopLoss={StopLoss}")
-            .Append("&")
-            .Append($"takeProfit={TakeProfit}")
-            .Append("&")
-            .Append($"timestamp={Timestamp}")
-            .Append("&")
-            .Append($"X-MBX-APIKEY={X_MBX_APIKEY}")
-            .Append("&")
-            .Append($"signature={Signature}")
-            .ToString();
+            => new UriQueryBuilder()
+            .AddValue($"expireTimestamp={ExpireTimestamp}")
+            .AddValue($"guaranteedStopLoss={GuaranteedStopLoss}")
+            .AddValue($"newPrice={NewPrice}")
+            .AddValue($"orderId={OrderId}")
+            .AddValue($"recvWindow={RecvWindow}")
+            .AddValue($"stopLoss={StopLoss}")
+            .AddValue($"takeProfit={TakeProfit}")
+            .AddValue($"timestamp={Timestamp}")
+            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"signature={Signature}")
+            .GetQuery();
     }
 }

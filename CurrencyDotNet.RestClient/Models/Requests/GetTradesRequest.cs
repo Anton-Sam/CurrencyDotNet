@@ -1,9 +1,13 @@
-﻿using System.Text;
+﻿using CurrencyDotNet.Common.Services;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
-    public class GetTradesRequest
+    public class GetTradesRequest : IBaseRequest
     {
+        /// <summary>
+        /// Get trades for a specific account and symbol.
+        /// </summary>
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }
@@ -14,22 +18,15 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int StartTime { get; set; }
 
         public override string ToString()
-            => new StringBuilder()
-            .Append($"recvWindow={RecvWindow}")
-            .Append('&')
-            .Append($"symbol={Symbol}")
-            .Append('&')
-            .Append($"timestamp={Timestamp}")
-            .Append('&')
-            .Append($"X-MBX-APIKEY={X_MBX_APIKEY}")
-            .Append('&')
-            .Append($"endTime={EndTime}")
-            .Append('&')
-            .Append($"limit={Limit}")
-            .Append('&')
-            .Append($"signature={Signature}")
-            .Append('&')
-            .Append($"startTime={StartTime}")
-            .ToString();
+            => new UriQueryBuilder()
+            .AddValue($"recvWindow={RecvWindow}")
+            .AddValue($"symbol={Symbol}")
+            .AddValue($"timestamp={Timestamp}")
+            .AddValue($"X-MBX-APIKEY={X_MBX_APIKEY}")
+            .AddValue($"endTime={EndTime}")
+            .AddValue($"limit={Limit}")
+            .AddValue($"signature={Signature}")
+            .AddValue($"startTime={StartTime}")
+            .GetQuery();
     }
 }
