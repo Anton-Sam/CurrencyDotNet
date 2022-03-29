@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get ledger by limit.
+    /// </summary>
     public class GetLedgersRequest : IRequestModel
     {
-        /// <summary>
-        /// Get ledger by limit.
-        /// </summary>
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
         public string ApiKey { get; set; }

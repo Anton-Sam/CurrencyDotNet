@@ -6,12 +6,23 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// <summary>
     /// Get compressed, aggregate trades. Trades that fill at the same time, from the same order, with the same price will have the quantity aggregated.
     /// </summary>
-    public class GetAggregatedTradeHistoryRequest : IRequestModel
+    internal class GetAggregatedTradeHistoryRequest : IRequestModel
     {
-        public int EndTime { get; set; }
-        public int Limit { get; set; }
-        public int StartTime { get; set; }
-        public string Symbol { get; set; }
+        string Symbol { get; set; }
+        int? Limit { get; set; }
+        long? StartTime { get; set; }
+        long? EndTime { get; set; }
+
+        public GetAggregatedTradeHistoryRequest(string symbol,
+            int? limit = null,
+            long? endTime = null,
+            long? startTime = null)
+        {
+            Symbol = symbol;
+            Limit = limit;
+            StartTime = startTime;
+            EndTime = endTime;
+        }
 
         public string GetQueryString()
             => new UriQueryBuilder()

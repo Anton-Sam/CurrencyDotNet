@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// General leverage settings can be seen.
+    /// </summary>
     public class GetLeverageSettingsRequest : IRequestModel
     {
-        /// <summary>
-        /// General leverage settings can be seen.
-        /// </summary>
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }

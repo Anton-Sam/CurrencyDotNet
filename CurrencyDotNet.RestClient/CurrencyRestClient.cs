@@ -1,16 +1,25 @@
 ﻿using CurrencyDotNet.Common.Enums;
 using CurrencyDotNet.RestClient.Interfaces;
+using CurrencyDotNet.RestClient.Models.Requests;
+using CurrencyDotNet.RestClient.Models.Responses;
+using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
 
 namespace CurrencyDotNet.RestClient
 {
-
     internal class CurrencyRestClient : ICurrencyRestClient
     {
+        private readonly IRestApiProvider _restApiProvider;
+
         public CurrencyRestClient(string apiKey,
             ClientMode clientMode = ClientMode.Real,
             ApiVersion apiVersion = ApiVersion.V1)
         {
+            _restApiProvider = new RestApiProvider(clientMode, apiVersion);
+        }
 
+        public void Dispose()
+        {
+            _restApiProvider.Dispose();
         }
 
         public void CancelOrder()
@@ -28,9 +37,20 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public void GetAggregatedTradesHistory()
+        public async Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(string symbol,
+            int? limit = null,
+            DateTime? endTime = null,
+            DateTime? startTime = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            var request = new GetAggregatedTradeHistoryRequest(
+                symbol: symbol,
+                limit: limit,
+                endTime: ((DateTimeOffset)endTime).ToUnixTimeSeconds(),
+                startTime: ((DateTimeOffset)startTime).ToUnixTimeSeconds()
+                );
+
+            return await _restApiProvider.GetRequestAsync<AggregatedTradeHistory>(request, cancellationToken);
         }
 
         public void GetCurrencies()

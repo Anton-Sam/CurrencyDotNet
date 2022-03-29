@@ -1,6 +1,9 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
+using CurrencyDotNet.Common.Enums;
+using CurrencyDotNet.RestClient.Interfaces;
+using CurrencyDotNet.RestClient.Models.Responses;
+using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
 
 namespace CurrencyDotNet.RestClient
 {
@@ -8,7 +11,7 @@ namespace CurrencyDotNet.RestClient
     {
         private readonly HttpClient _httpClient;
 
-        public RestApiProvider()
+        public RestApiProvider(ClientMode clientMode, ApiVersion apiVersion)
         {
             _httpClient = new HttpClient();
         }
@@ -18,7 +21,7 @@ namespace CurrencyDotNet.RestClient
             _httpClient.Dispose();
         }
 
-        public async Task<T> GetRequestAsync<T>(IRequestModel requestModel,
+        public async Task<CallResult<T>> GetRequestAsync<T>(IRequestModel requestModel,
             CancellationToken token = default)
         {
             var response = await _httpClient.GetAsync(
@@ -28,7 +31,7 @@ namespace CurrencyDotNet.RestClient
             return await ParseResponse<T>(response);
         }
 
-        public async Task<T> PostRequestAsync<T>(IRequestModel requestModel,
+        public async Task<CallResult<T>> PostRequestAsync<T>(IRequestModel requestModel,
             CancellationToken token)
         {
             var requestContent = new StringContent(
@@ -37,21 +40,20 @@ namespace CurrencyDotNet.RestClient
                 mediaType: "application/x-www-form-urlencoded");
 
             var response = await _httpClient.PostAsync(
-                requestUri: requestUri,
+                requestUri: requestModel.GetQueryString(),
                 content: requestContent,
                 cancellationToken: token);
 
             return await ParseResponse<T>(response);
         }
 
-        private async Task<T> ParseResponse<T>(HttpResponseMessage response)
+        private async Task<CallResult<T>> ParseResponse<T>(HttpResponseMessage response)
         {
-            response.EnsureSuccessStatusCode();
-
             var content = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<T>(content);
 
-            return result;
+            return response.IsSuccessStatusCode ? 
+                new CallResult<T>(JsonSerializer.Deserialize<T>(content)) : 
+                new CallResult<T>(JsonSerializer.Deserialize<Error>(content));
         }
     }
 }

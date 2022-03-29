@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Order book.
+    /// </summary>
     public class GetOrderBookRequest : IRequestModel
     {
-        /// <summary>
-        /// Order book.
-        /// </summary>
         public int Limit { get; set; }
         public string Symbol { get; set; }
 

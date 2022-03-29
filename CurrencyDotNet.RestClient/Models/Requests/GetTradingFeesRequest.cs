@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get all system fees.
+    /// </summary>
     public class GetTradingFeesRequest : IRequestModel
     {
-        /// <summary>
-        /// Get all system fees.
-        /// </summary>
         public string Symbol { get; set; }
 
         public string GetQueryString()
