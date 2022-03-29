@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get all open trades within the account.
+    /// </summary>
     public class GetTradingPositionsRequest : IRequestModel
     {
-        /// <summary>
-        /// Get all open trades within the account.
-        /// </summary>
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
         public string ApiKey { get; set; }

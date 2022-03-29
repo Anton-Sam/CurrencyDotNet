@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get all system limits.
+    /// </summary>
     public class GetTradingLimitsRequest : IRequestModel
     {
-        /// <summary>
-        /// Get all system limits.
-        /// </summary>
         public string Symbol { get; set; }
 
         public string GetQueryString()

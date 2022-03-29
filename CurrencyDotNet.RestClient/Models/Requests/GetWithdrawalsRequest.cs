@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get withdrawals for user.
+    /// </summary>
     public class GetWithdrawalsRequest : IRequestModel
     {
-        /// <summary>
-        /// Get withdrawals for user.
-        /// </summary>
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
         public string ApiKey { get; set; }
