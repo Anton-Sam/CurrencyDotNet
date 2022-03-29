@@ -1,12 +1,12 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Interfaces;
+using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get transactions by limit and sinceTime.
     /// </summary>
-    public class GetTransactionsRequest : IRequestModel
+    internal class GetTransactionsRequest : RequestModel, IRequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
@@ -15,15 +15,5 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int Limit { get; set; }
         public string Signature { get; set; }
         public int StartTime { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"recvWindow={RecvWindow}")
-            .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={ApiKey}")
-            .AddValue($"endTime={EndTime}")
-            .AddValue($"signature={Signature}")
-            .AddValue($"startTime={StartTime}")
-            .GetQuery();
     }
 }
