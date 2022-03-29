@@ -8,20 +8,20 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// </summary>
     internal class GetAggregatedTradeHistoryRequest : IRequestModel
     {
-        int EndTime { get; set; }
-        int Limit { get; set; }
-        int StartTime { get; set; }
         string Symbol { get; set; }
+        int? Limit { get; set; }
+        long? StartTime { get; set; }
+        long? EndTime { get; set; }
 
-        public GetAggregatedTradeHistoryRequest(int endTime,
-            int limit,
-            int startTime,
-            string symbol)
+        public GetAggregatedTradeHistoryRequest(string symbol,
+            int? limit = null,
+            long? endTime = null,
+            long? startTime = null)
         {
-            EndTime = endTime;
+            Symbol = symbol;
             Limit = limit;
             StartTime = startTime;
-            Symbol = symbol;
+            EndTime = endTime;
         }
 
         public string GetQueryString()

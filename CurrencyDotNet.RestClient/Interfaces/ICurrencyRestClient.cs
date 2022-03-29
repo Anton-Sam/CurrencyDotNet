@@ -6,11 +6,11 @@ namespace CurrencyDotNet.RestClient.Interfaces
     internal interface ICurrencyRestClient : IDisposable
     {
         void GetAccountInfo();
-        Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(int endTime, 
-            int limit, 
-            int startTime, 
-            string symbol, 
-            CancellationToken cancellationToken);
+        Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(string symbol,
+            int? limit = null,
+            DateTime? endTime = null,
+            DateTime? startTime = null,
+            CancellationToken cancellationToken = default(CancellationToken));
         void GetCurrencies();
         void GetDepositAddress();
         void GetDeposits();

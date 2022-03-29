@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using CurrencyDotNet.Common.Enums;
 using CurrencyDotNet.RestClient.Interfaces;
 using CurrencyDotNet.RestClient.Models.Responses;
 using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
@@ -10,7 +11,7 @@ namespace CurrencyDotNet.RestClient
     {
         private readonly HttpClient _httpClient;
 
-        public RestApiProvider()
+        public RestApiProvider(ClientMode clientMode, ApiVersion apiVersion)
         {
             _httpClient = new HttpClient();
         }

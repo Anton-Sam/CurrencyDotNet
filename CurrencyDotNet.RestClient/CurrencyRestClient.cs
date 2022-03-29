@@ -14,7 +14,7 @@ namespace CurrencyDotNet.RestClient
             ClientMode clientMode = ClientMode.Real,
             ApiVersion apiVersion = ApiVersion.V1)
         {
-            _restApiProvider = new RestApiProvider();
+            _restApiProvider = new RestApiProvider(clientMode, apiVersion);
         }
 
         public void Dispose()
@@ -37,17 +37,18 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public async Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(int endTime, 
-            int limit, 
-            int startTime, 
-            string symbol, 
-            CancellationToken cancellationToken)
+        public async Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(string symbol,
+            int? limit = null,
+            DateTime? endTime = null,
+            DateTime? startTime = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new GetAggregatedTradeHistoryRequest(
-                endTime: endTime, 
-                limit: limit, 
-                startTime: startTime, 
-                symbol: symbol);
+                symbol: symbol,
+                limit: limit,
+                endTime: ((DateTimeOffset)endTime).ToUnixTimeSeconds(),
+                startTime: ((DateTimeOffset)startTime).ToUnixTimeSeconds()
+                );
 
             return await _restApiProvider.GetRequestAsync<AggregatedTradeHistory>(request, cancellationToken);
         }
