@@ -3,7 +3,7 @@ using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Interfaces
 {
-    internal interface ICurrencyRestClient
+    internal interface ICurrencyRestClient : IDisposable
     {
         void GetAccountInfo();
         Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(int endTime, 

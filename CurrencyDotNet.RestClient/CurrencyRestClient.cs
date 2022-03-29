@@ -17,6 +17,11 @@ namespace CurrencyDotNet.RestClient
             _restApiProvider = new RestApiProvider();
         }
 
+        public void Dispose()
+        {
+            _restApiProvider.Dispose();
+        }
+
         public void CancelOrder()
         {
             throw new NotImplementedException();
