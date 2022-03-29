@@ -3,6 +3,7 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient
 {
+
     internal class CurrencyRestClient : ICurrencyRestClient
     {
         public CurrencyRestClient(string apiKey,
