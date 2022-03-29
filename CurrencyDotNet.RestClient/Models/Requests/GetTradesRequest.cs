@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get trades for a specific account and symbol.
+    /// </summary>
     public class GetTradesRequest : IRequestModel
     {
-        /// <summary>
-        /// Get trades for a specific account and symbol.
-        /// </summary>
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }

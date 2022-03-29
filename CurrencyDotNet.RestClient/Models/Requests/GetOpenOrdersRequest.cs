@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get all open orders within exchange and leverage trading modes on a symbol. Careful when accessing this with no symbol.
+    /// </summary>
     public class GetOpenOrdersRequest : IRequestModel
     {
-        /// <summary>
-        /// Get all open orders within exchange and leverage trading modes on a symbol. Careful when accessing this with no symbol.
-        /// </summary>
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }

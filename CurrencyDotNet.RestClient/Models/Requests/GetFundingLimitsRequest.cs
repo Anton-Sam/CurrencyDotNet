@@ -3,11 +3,11 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
+    /// <summary>
+    /// Get all system Funding limits.
+    /// </summary>
     public class GetFundingLimitsRequest : IRequestModel
     {
-        /// <summary>
-        /// Get all system Funding limits.
-        /// </summary>
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
         public string ApiKey { get; set; }
