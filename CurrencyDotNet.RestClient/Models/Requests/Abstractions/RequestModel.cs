@@ -3,7 +3,7 @@ using CurrencyDotNet.Common.Extensions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests.Abstractions
 {
-    internal class RequestModel
+    public class RequestModel
     {
         /// <summary>
         /// Takes all the properties of an object and the values ​​of those properties, providing them as a request Uri parameter.

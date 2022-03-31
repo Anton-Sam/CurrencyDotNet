@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CurrencyDotNet.Common\CurrencyDotNet.Common.csproj" />
+    <ProjectReference Include="..\CurrencyDotNet.RestClient\CurrencyDotNet.RestClient.csproj" />
   </ItemGroup>
 
 </Project>
