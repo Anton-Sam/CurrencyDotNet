@@ -158,14 +158,20 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public Task<CallResult<IEnumerable<Ticker>>> GetTickers()
+        public async Task<CallResult<IEnumerable<Ticker>>> GetTickersAsync(
+            CancellationToken cancellationToken=default(CancellationToken))
         {
-            throw new NotImplementedException();
+            var request = new GetTickerRequest(symbol: null);
+
+            return await _restApiProvider.GetRequestAsync<IEnumerable<Ticker>>(request,cancellationToken);
         }
 
-        public Task<CallResult<Ticker>> GetTicker(string symbol)
+        public async Task<CallResult<Ticker>> GetTickerAsync(string symbol,
+            CancellationToken cancellationToken=default(CancellationToken))
         {
-            throw new NotImplementedException();
+            var request=new GetTickerRequest(symbol: symbol);
+
+            return await _restApiProvider.GetRequestAsync<Ticker>(request,cancellationToken);
         }
     }
 }

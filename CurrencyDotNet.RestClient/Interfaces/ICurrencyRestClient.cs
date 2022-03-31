@@ -22,8 +22,21 @@ namespace CurrencyDotNet.RestClient.Interfaces
         void GetLeverageSettings();
         void GetTrades();
         void GetOpenOrders();
-        Task<CallResult<IEnumerable<Ticker>>> GetTickers();
-        Task<CallResult<Ticker>> GetTicker(string symbol);
+        /// <summary>
+        /// Returns the ticker for all the symbols for the last 24 hours
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<CallResult<IEnumerable<Ticker>>> GetTickersAsync(
+            CancellationToken cancellationToken=default(CancellationToken));
+        /// <summary>
+        /// Returns the ticker for a selected symbol for the last 24 hours
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<CallResult<Ticker>> GetTickerAsync(string symbol,
+            CancellationToken cancellationToken=default(CancellationToken));
         void GetTime();
         void GetTradingFees();
         void GetTradingLimits();

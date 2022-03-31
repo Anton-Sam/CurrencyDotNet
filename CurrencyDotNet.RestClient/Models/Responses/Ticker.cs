@@ -70,22 +70,24 @@ namespace CurrencyDotNet.RestClient.Models.Responses
         [JsonPropertyName("quoteVolume")]
         public decimal QuoteVolume { get; set; }
         /// <summary>
-        /// Open date and time in unix format
+        /// Open date and time in milliseconds unix format
         /// </summary>
         [JsonPropertyName("openTime")]
         public long UnixOpenTime { get; set; }
         /// <summary>
-        /// Close date and time in unix format
+        /// Close date and time in milliseconds unix format
         /// </summary>
         [JsonPropertyName("closeTime")]
         public long UnixCloseTime { get; set; }
         /// <summary>
         /// Open date and time
         /// </summary>
-        public DateTime OpenTime { get; set; }
+        public DateTimeOffset OpenTime =>
+            DateTimeOffset.FromUnixTimeMilliseconds(UnixOpenTime);
         /// <summary>
         /// Close date and time
         /// </summary>
-        public DateTime CloseTime { get; set; }
+        public DateTimeOffset CloseTime =>
+            DateTimeOffset.FromUnixTimeMilliseconds(UnixCloseTime);
     }
 }
