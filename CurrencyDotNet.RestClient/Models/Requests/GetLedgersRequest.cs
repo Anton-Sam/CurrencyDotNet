@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get ledger by limit.
     /// </summary>
-    public class GetLedgersRequest : IRequestModel
+    internal class GetLedgersRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
@@ -15,16 +14,5 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int Limit { get; set; }
         public string Signature { get; set; }
         public int StartTime { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"recvWindow={RecvWindow}")
-            .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={ApiKey}")
-            .AddValue($"endTime={EndTime}")
-            .AddValue($"limit={Limit}")
-            .AddValue($"signature={Signature}")
-            .AddValue($"startTime={StartTime}")
-            .GetQuery();
     }
 }

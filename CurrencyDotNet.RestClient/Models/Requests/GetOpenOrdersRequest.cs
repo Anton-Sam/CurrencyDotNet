@@ -1,26 +1,16 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get all open orders within exchange and leverage trading modes on a symbol. Careful when accessing this with no symbol.
     /// </summary>
-    public class GetOpenOrdersRequest : IRequestModel
+    internal class GetOpenOrdersRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
         public int Timestamp { get; set; }
         public string ApiKey { get; set; }
         public string Signature { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"recvWindow={RecvWindow}")
-            .AddValue($"symbol={Symbol}")
-            .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={ApiKey}")
-            .AddValue($"signature={Signature}")
-            .GetQuery();
     }
 }

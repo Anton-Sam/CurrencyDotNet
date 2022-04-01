@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// To edit current leverage trade by changing stop loss and take profit levels.
     /// </summary>
-    public class UpdatePositionRequest : IRequestModel
+    internal class UpdatePositionRequest : RequestModel
     {
         public bool GuaranteedStopLoss { get; set; }
         public string PositionId { get; set; }
@@ -16,17 +15,5 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int Timestamp { get; set; }
         public string ApiKey { get; set; }
         public string Signature { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"guaranteedStopLoss={GuaranteedStopLoss}")
-            .AddValue($"positionId={PositionId}")
-            .AddValue($"recvWindow={RecvWindow}")
-            .AddValue($"stopLoss={StopLoss}")
-            .AddValue($"takeProfit={TakeProfit}")
-            .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={ApiKey}")
-            .AddValue($"signature={Signature}")
-            .GetQuery();
     }
 }

@@ -1,18 +1,12 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get all system fees.
     /// </summary>
-    public class GetTradingFeesRequest : IRequestModel
+    internal class GetTradingFeesRequest : RequestModel
     {
         public string Symbol { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"symbol={Symbol}")
-            .GetQuery();
     }
 }

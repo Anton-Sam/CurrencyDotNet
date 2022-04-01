@@ -1,20 +1,13 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Order book.
     /// </summary>
-    public class GetOrderBookRequest : IRequestModel
+    internal class GetOrderBookRequest : RequestModel
     {
         public int Limit { get; set; }
         public string Symbol { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"limit={Limit}")
-            .AddValue($"symbol={Symbol}")
-            .GetQuery();
     }
 }

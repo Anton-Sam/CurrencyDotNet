@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get trades for a specific account and symbol.
     /// </summary>
-    public class GetTradesRequest : IRequestModel
+    internal class GetTradesRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }
@@ -16,17 +15,5 @@ namespace CurrencyDotNet.RestClient.Models.Requests
         public int Limit { get; set; }
         public string Signature { get;set; }
         public int StartTime { get; set; }
-
-        public string GetQueryString()
-            => new UriQueryBuilder()
-            .AddValue($"recvWindow={RecvWindow}")
-            .AddValue($"symbol={Symbol}")
-            .AddValue($"timestamp={Timestamp}")
-            .AddValue($"X-MBX-APIKEY={ApiKey}")
-            .AddValue($"endTime={EndTime}")
-            .AddValue($"limit={Limit}")
-            .AddValue($"signature={Signature}")
-            .AddValue($"startTime={StartTime}")
-            .GetQuery();
     }
 }
