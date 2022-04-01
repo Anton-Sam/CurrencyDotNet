@@ -6,7 +6,7 @@ using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
 
 namespace CurrencyDotNet.RestClient
 {
-    internal class CurrencyRestClient : ICurrencyRestClient
+    public class CurrencyRestClient : ICurrencyRestClient
     {
         private readonly IRestApiProvider _restApiProvider;
 
@@ -98,9 +98,17 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public void GetOrderBook()
+        public async Task<CallResult<OrderBook>> GetOrderBookAsync(string symbol,
+            int? limit = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            var request = new GetOrderBookRequest()
+            {
+                Symbol = symbol,
+                Limit = limit
+            };
+
+            return await _restApiProvider.GetRequestAsync<OrderBook>(request, cancellationToken);
         }
 
         public void GetTicker24hr()

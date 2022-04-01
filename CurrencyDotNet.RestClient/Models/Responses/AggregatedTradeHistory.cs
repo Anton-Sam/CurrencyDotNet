@@ -3,7 +3,7 @@ using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Responses
 {
-    internal class AggregatedTradeHistory : IResponseModel
+    public class AggregatedTradeHistory : IResponseModel
     {
         /// <summary>
         /// Timestamp

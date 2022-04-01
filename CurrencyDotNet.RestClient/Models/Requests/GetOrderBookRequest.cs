@@ -7,7 +7,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// </summary>
     internal class GetOrderBookRequest : RequestModel
     {
-        public int Limit { get; set; }
+        public int? Limit { get; set; }
         public string Symbol { get; set; }
     }
 }

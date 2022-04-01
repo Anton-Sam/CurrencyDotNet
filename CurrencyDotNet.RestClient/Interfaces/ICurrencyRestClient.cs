@@ -3,18 +3,24 @@ using CurrencyDotNet.RestClient.Models.Responses.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Interfaces
 {
-    internal interface ICurrencyRestClient : IDisposable
+    public interface ICurrencyRestClient : IDisposable
     {
         void GetAccountInfo();
+
         Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAsync(string symbol,
             int? limit = null,
             DateTime? endTime = null,
             DateTime? startTime = null,
             CancellationToken cancellationToken = default(CancellationToken));
+
         void GetCurrencies();
         void GetDepositAddress();
         void GetDeposits();
-        void GetOrderBook();
+
+        Task<CallResult<OrderBook>> GetOrderBookAsync(string symbol,
+            int? limit = null,
+            CancellationToken cancellationToken = default(CancellationToken));
+
         void GetExcangeInfo();
         void GetFundingLimits();
         void GetKlines();
