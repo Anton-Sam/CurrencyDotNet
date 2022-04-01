@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Cancel an active order within exchange and leverage trading modes.
     /// </summary>
-    internal class CancelOrderRequest : RequestModel, IRequestModel
+    internal class CancelOrderRequest : RequestModel
     {
         public string OrderId { get; set; }
         public int RecvWindow { get; set; }

@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get trades for a specific account and symbol.
     /// </summary>
-    internal class GetTradesRequest : RequestModel, IRequestModel
+    internal class GetTradesRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }

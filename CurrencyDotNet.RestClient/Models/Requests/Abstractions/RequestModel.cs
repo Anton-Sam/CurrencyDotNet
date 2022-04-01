@@ -1,9 +1,10 @@
 ﻿using CurrencyDotNet.Common.Models;
 using CurrencyDotNet.Common.Extensions;
+using CurrencyDotNet.RestClient.Interfaces;
 
 namespace CurrencyDotNet.RestClient.Models.Requests.Abstractions
 {
-    public class RequestModel
+    public class RequestModel : IRequestModel
     {
         /// <summary>
         /// Takes all the properties of an object and the values ​​of those properties, providing them as a request Uri parameter.

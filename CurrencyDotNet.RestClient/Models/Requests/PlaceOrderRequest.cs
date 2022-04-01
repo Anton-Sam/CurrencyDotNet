@@ -1,5 +1,4 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
@@ -7,7 +6,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// To create a market or limit order in the exchange trading mode, and market, limit or stop order in the leverage trading mode.\n
     /// Please note that to open an order within the ‘leverage’ trading mode symbolLeverage should be used and additional accountId parameter should be mentioned in the request.
     /// </summary>
-    internal class PlaceOrderRequest : RequestModel, IRequestModel
+    internal class PlaceOrderRequest : RequestModel
     {
         public string AccountId { get; set; }
         public int ExpireTimestamp { get; set; }

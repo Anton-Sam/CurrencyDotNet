@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
     /// </summary>
-    internal class GetKlinesRequest : RequestModel, IRequestModel
+    internal class GetKlinesRequest : RequestModel
     {   
         public int EndTime { get; set; }
         public string Interval { get; set; }

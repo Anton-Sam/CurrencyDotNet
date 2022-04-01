@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get transactions by limit and sinceTime.
     /// </summary>
-    internal class GetTransactionsRequest : RequestModel, IRequestModel
+    internal class GetTransactionsRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }

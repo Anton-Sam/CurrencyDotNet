@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// General leverage settings can be seen.
     /// </summary>
-    internal class GetLeverageSettingsRequest : RequestModel, IRequestModel
+    internal class GetLeverageSettingsRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }

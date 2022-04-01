@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get compressed, aggregate trades. Trades that fill at the same time, from the same order, with the same price will have the quantity aggregated.
     /// </summary>
-    internal class GetAggregatedTradeHistoryRequest : RequestModel, IRequestModel
+    internal class GetAggregatedTradeHistoryRequest : RequestModel
     {
         string Symbol { get; set; }
         int? Limit { get; set; }

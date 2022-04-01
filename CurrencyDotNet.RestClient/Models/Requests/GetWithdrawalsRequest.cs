@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get withdrawals for user.
     /// </summary>
-    internal class GetWithdrawalsRequest : RequestModel, IRequestModel
+    internal class GetWithdrawalsRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }

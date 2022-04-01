@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get all open orders within exchange and leverage trading modes on a symbol. Careful when accessing this with no symbol.
     /// </summary>
-    internal class GetOpenOrdersRequest : RequestModel, IRequestModel
+    internal class GetOpenOrdersRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public string Symbol { get; set; }

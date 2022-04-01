@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get deposits for user.
     /// </summary>
-    internal class GetDepositsRequest : RequestModel, IRequestModel
+    internal class GetDepositsRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }

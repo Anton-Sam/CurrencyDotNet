@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Edit current leverage orders by changing take profit and stop loss levels.
     /// </summary>
-    internal class UpdateOrderRequest : RequestModel, IRequestModel
+    internal class UpdateOrderRequest : RequestModel
     {
         public int ExpireTimestamp { get; set; }
         public bool GuaranteedStopLoss { get; set; }

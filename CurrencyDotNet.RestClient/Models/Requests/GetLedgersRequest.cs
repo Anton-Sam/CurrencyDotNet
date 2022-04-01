@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get ledger by limit.
     /// </summary>
-    internal class GetLedgersRequest : RequestModel, IRequestModel
+    internal class GetLedgersRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }

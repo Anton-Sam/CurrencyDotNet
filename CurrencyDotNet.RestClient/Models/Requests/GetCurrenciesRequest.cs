@@ -1,12 +1,11 @@
-﻿using CurrencyDotNet.RestClient.Interfaces;
-using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
+﻿using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
     /// <summary>
     /// Get all system currencies.
     /// </summary>
-    internal class GetCurrenciesRequest : RequestModel, IRequestModel
+    internal class GetCurrenciesRequest : RequestModel
     {
         public int RecvWindow { get; set; }
         public int Timestamp { get; set; }
