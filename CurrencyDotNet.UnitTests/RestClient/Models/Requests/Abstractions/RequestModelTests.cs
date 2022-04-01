@@ -25,7 +25,7 @@ namespace CurrencyDotNet.UnitTests.RestClient.Models.Requests.Abstractions
     public class RequestModelTests
     {
         [Fact]
-        public void GetQueryString_SuccessReturnValue()
+        public void GetQueryString_RequestModel_ReturnsQueryString()
         {
             //Arrange
             var requestModelTestingClass = new RequestModelTestingClass(

@@ -37,7 +37,7 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public async Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(string symbol,
+        public async Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAsync(string symbol,
             int? limit = null,
             DateTime? endTime = null,
             DateTime? startTime = null,
