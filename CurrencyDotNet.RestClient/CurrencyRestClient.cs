@@ -46,8 +46,8 @@ namespace CurrencyDotNet.RestClient
             var request = new GetAggregatedTradeHistoryRequest(
                 symbol: symbol,
                 limit: limit,
-                endTime: ((DateTimeOffset)endTime).ToUnixTimeSeconds(),
-                startTime: ((DateTimeOffset)startTime).ToUnixTimeSeconds()
+                endTime: ((DateTimeOffset)endTime).ToUnixTimeMilliseconds(),
+                startTime: ((DateTimeOffset)startTime).ToUnixTimeMilliseconds()
                 );
 
             return await _restApiProvider.GetRequestAsync<AggregatedTradeHistory>(request, cancellationToken);

@@ -6,7 +6,7 @@ namespace CurrencyDotNet.RestClient.Interfaces
     internal interface ICurrencyRestClient : IDisposable
     {
         void GetAccountInfo();
-        Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAwait(string symbol,
+        Task<CallResult<AggregatedTradeHistory>> GetAggregatedTradesHistoryAsync(string symbol,
             int? limit = null,
             DateTime? endTime = null,
             DateTime? startTime = null,
