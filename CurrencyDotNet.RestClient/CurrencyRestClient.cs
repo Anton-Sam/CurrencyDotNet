@@ -157,7 +157,11 @@ namespace CurrencyDotNet.RestClient
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Returns tickers for all the symbols for the last 24 hours
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<CallResult<IEnumerable<Ticker>>> GetTickersAsync(
             CancellationToken cancellationToken=default(CancellationToken))
         {
@@ -165,7 +169,12 @@ namespace CurrencyDotNet.RestClient
 
             return await _restApiProvider.GetRequestAsync<IEnumerable<Ticker>>(request,cancellationToken);
         }
-
+        /// <summary>
+        /// Returns ticker for a selected symbol for the last 24 hours
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public async Task<CallResult<Ticker>> GetTickerAsync(string symbol,
             CancellationToken cancellationToken=default(CancellationToken))
         {
