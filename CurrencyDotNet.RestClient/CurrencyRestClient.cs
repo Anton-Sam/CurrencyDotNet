@@ -103,11 +103,6 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public void GetTicker24hr()
-        {
-            throw new NotImplementedException();
-        }
-
         public void GetTime()
         {
             throw new NotImplementedException();
@@ -161,6 +156,31 @@ namespace CurrencyDotNet.RestClient
         public void UpdatePosition()
         {
             throw new NotImplementedException();
+        }
+        /// <summary>
+        /// Returns tickers for all the symbols for the last 24 hours
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<CallResult<IEnumerable<Ticker>>> GetAllTickersAsync(
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new GetTickerRequest();
+
+            return await _restApiProvider.GetRequestAsync<IEnumerable<Ticker>>(request, cancellationToken);
+        }
+        /// <summary>
+        /// Returns ticker for a selected symbol for the last 24 hours
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public async Task<CallResult<Ticker>> GetTickerAsync(string symbol,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new GetTickerRequest(symbol: symbol);
+
+            return await _restApiProvider.GetRequestAsync<Ticker>(request, cancellationToken);
         }
     }
 }
