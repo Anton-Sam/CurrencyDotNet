@@ -27,8 +27,8 @@ namespace CurrencyDotNet.RestClient.Interfaces
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<CallResult<IEnumerable<Ticker>>> GetTickersAsync(
-            CancellationToken cancellationToken=default(CancellationToken));
+        Task<CallResult<IEnumerable<Ticker>>> GetAllTickersAsync(
+            CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns the ticker for a selected symbol for the last 24 hours
         /// </summary>
@@ -36,7 +36,7 @@ namespace CurrencyDotNet.RestClient.Interfaces
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<CallResult<Ticker>> GetTickerAsync(string symbol,
-            CancellationToken cancellationToken=default(CancellationToken));
+            CancellationToken cancellationToken = default(CancellationToken));
         void GetTime();
         void GetTradingFees();
         void GetTradingLimits();

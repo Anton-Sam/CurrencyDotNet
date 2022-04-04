@@ -162,12 +162,12 @@ namespace CurrencyDotNet.RestClient
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<CallResult<IEnumerable<Ticker>>> GetTickersAsync(
-            CancellationToken cancellationToken=default(CancellationToken))
+        public async Task<CallResult<IEnumerable<Ticker>>> GetAllTickersAsync(
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new GetTickerRequest(symbol: null);
+            var request = new GetTickerRequest();
 
-            return await _restApiProvider.GetRequestAsync<IEnumerable<Ticker>>(request,cancellationToken);
+            return await _restApiProvider.GetRequestAsync<IEnumerable<Ticker>>(request, cancellationToken);
         }
         /// <summary>
         /// Returns ticker for a selected symbol for the last 24 hours
@@ -176,11 +176,11 @@ namespace CurrencyDotNet.RestClient
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         public async Task<CallResult<Ticker>> GetTickerAsync(string symbol,
-            CancellationToken cancellationToken=default(CancellationToken))
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request=new GetTickerRequest(symbol: symbol);
+            var request = new GetTickerRequest(symbol: symbol);
 
-            return await _restApiProvider.GetRequestAsync<Ticker>(request,cancellationToken);
+            return await _restApiProvider.GetRequestAsync<Ticker>(request, cancellationToken);
         }
     }
 }
