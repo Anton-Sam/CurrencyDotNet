@@ -5,8 +5,12 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// <summary>
     /// Get all system limits.
     /// </summary>
-    internal class GetTradingLimitsRequest : RequestModel
+    internal class GetSymbolLimitsRequest : RequestModel
     {
         public string Symbol { get; set; }
+        public GetSymbolLimitsRequest(string? symbol = null)
+        {
+            Symbol = symbol;
+        }
     }
 }
