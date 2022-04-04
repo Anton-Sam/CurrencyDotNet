@@ -118,9 +118,12 @@ namespace CurrencyDotNet.RestClient
             throw new NotImplementedException();
         }
 
-        public void GetTradingFees()
+        public async Task<CallResult<IEnumerable<TradingFee>>> GetTradingFeesAsync(string? symbol = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            throw new NotImplementedException();
+            var request = new GetTradingFeesRequest(symbol);
+
+            return await _restApiProvider.GetRequestAsync<IEnumerable<TradingFee>>(request, cancellationToken);
         }
 
         public void GetTradingLimits()

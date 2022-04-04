@@ -24,7 +24,14 @@ namespace CurrencyDotNet.RestClient.Interfaces
         void GetOpenOrders();
         void GetTicker24hr();
         void GetTime();
-        void GetTradingFees();
+        /// <summary>
+        /// Returns trading fees for a selected symbol
+        /// </summary>
+        /// <param name="symbol">Symbol</param>
+        /// <param name="cancellationToken">Cancellation Token</param>
+        /// <returns></returns>
+        Task<CallResult<IEnumerable<TradingFee>>> GetTradingFeesAsync(string? symbol = null,
+            CancellationToken cancellationToken = default(CancellationToken));
         void GetTradingLimits();
         void GetTradingPositions();
         void GetTradingPositionsHistory();

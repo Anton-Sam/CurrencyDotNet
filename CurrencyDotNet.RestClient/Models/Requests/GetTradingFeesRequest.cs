@@ -8,5 +8,10 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     internal class GetTradingFeesRequest : RequestModel
     {
         public string Symbol { get; set; }
+
+        public GetTradingFeesRequest(string? symbol = null)
+        {
+            Symbol = symbol;
+        }
     }
 }
