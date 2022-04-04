@@ -6,11 +6,11 @@ namespace CurrencyDotNet.RestClient.Models.Requests
     /// <summary>
     /// 24 hour rolling window price change statistics. Careful when accessing this with no symbol.
     /// </summary>
-    public class GetTickerRequest : IRequestModel
+    public class GetTickerRequest : RequestModel
     {
         public string? Symbol { get; set; }
 
-        public GetTickerRequest(string symbol)
+        public GetTickerRequest(string? symbol = null)
         {
             Symbol = symbol;
         }
