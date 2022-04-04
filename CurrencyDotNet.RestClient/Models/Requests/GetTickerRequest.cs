@@ -1,5 +1,5 @@
 ﻿using CurrencyDotNet.Common.Services;
-using CurrencyDotNet.RestClient.Interfaces;
+using CurrencyDotNet.RestClient.Models.Requests.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests
 {
