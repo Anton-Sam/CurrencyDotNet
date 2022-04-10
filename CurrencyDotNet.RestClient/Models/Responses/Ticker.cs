@@ -1,8 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using CurrencyDotNet.RestClient.Interfaces;
+using System.Text.Json.Serialization;
 
 namespace CurrencyDotNet.RestClient.Models.Responses
 {
-    public class Ticker
+    public class Ticker : IResponseModel
     {
         /// <summary>
         /// Symbol
