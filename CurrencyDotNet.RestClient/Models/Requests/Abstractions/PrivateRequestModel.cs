@@ -1,4 +1,5 @@
-﻿using CurrencyDotNet.Common.Extensions;
+﻿using CurrencyDotNet.Common;
+using CurrencyDotNet.Common.Extensions;
 
 namespace CurrencyDotNet.RestClient.Models.Requests.Abstractions
 {
@@ -12,7 +13,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests.Abstractions
 
         public new string GetQueryString()
         {
-            Timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            Timestamp = TimeProvider.Current.UtcNow.ToUnixTimeMilliseconds();
             var requestString = base.GetQueryString();
             return string.Concat(requestString, "&signature=", requestString.HmacSha256(_apiKey));
         }
