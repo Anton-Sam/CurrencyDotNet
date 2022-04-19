@@ -32,7 +32,7 @@ namespace CurrencyDotNet.UnitTests.RestClient.Models.Requests.Abstractions
                 symbol: "USD",
                 limit: 1000,
                 startTime: 90000);
-            var expected = "?symbol=USD&limit=1000&startTime=90000";
+            var expected = "symbol=USD&limit=1000&startTime=90000";
 
             //Act
             var queryString = requestModelTestingClass.GetQueryString();

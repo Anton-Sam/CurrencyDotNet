@@ -25,7 +25,7 @@ namespace CurrencyDotNet.RestClient.Models.Requests.Abstractions
                 if (!keyValue.IsEmpty()) parametersList.Add(keyValue.ToString());
             }
 
-            return $"?{string.Join('&', parametersList)}";
+            return $"{string.Join('&', parametersList)}";
         }
     }
 }
