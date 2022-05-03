@@ -54,7 +54,13 @@ namespace CurrencyDotNet.RestClient.Interfaces
         /// <returns>List of the limits for symbols</returns>
         Task<CallResult<IEnumerable<SymbolLimits>>> GetSymbolLimitsAsync(string? symbol = null,
             CancellationToken cancellationToken = default);
-        void GetTradingPositions();
+        /// <summary>
+        /// Returns all open trades within account
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation Token</param>
+        /// <returns>List of the trades</returns>
+        Task<CallResult<TradingPositions>> GetTradingPositionsAsync(
+            CancellationToken cancellationToken = default);
         void GetTradingPositionsHistory();
         void GetTransactions();
         void GetWithdrawals();

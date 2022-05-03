@@ -9,12 +9,14 @@ namespace CurrencyDotNet.RestClient
     internal class CurrencyRestClient : ICurrencyRestClient
     {
         private readonly IRestApiProvider _restApiProvider;
+        private readonly string _apiKey;
 
         public CurrencyRestClient(string apiKey,
             ClientMode clientMode = ClientMode.Real,
             ApiVersion apiVersion = ApiVersion.V1)
         {
             _restApiProvider = new RestApiProvider(clientMode, apiVersion);
+            _apiKey = apiKey;
         }
 
         public void Dispose()
@@ -124,14 +126,17 @@ namespace CurrencyDotNet.RestClient
         public async Task<CallResult<IEnumerable<SymbolLimits>>> GetSymbolLimitsAsync(string? symbol = null,
             CancellationToken cancellationToken = default)
         {
-            var request=new GetSymbolLimitsRequest(symbol);
+            var request = new GetSymbolLimitsRequest(symbol);
 
             return await _restApiProvider.GetRequestAsync<IEnumerable<SymbolLimits>>(request, cancellationToken);
         }
 
-        public void GetTradingPositions()
+        public async Task<CallResult<TradingPositions>> GetTradingPositionsAsync(
+            CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var request = new GetTradingPositionsRequest(_apiKey);
+
+            return await _restApiProvider.GetRequestAsync<TradingPositions>(request, cancellationToken);
         }
 
         public void GetTradingPositionsHistory()
