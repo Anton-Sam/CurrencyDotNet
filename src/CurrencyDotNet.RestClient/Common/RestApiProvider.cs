@@ -6,7 +6,7 @@ using CurrencyDotNet.RestClient.Responses.Abstractions;
 
 namespace CurrencyDotNet.RestClient.Common;
 
-public class RestApiProvider : IRestApiProvider
+internal class RestApiProvider : IRestApiProvider
 {
     private readonly HttpClient _httpClient;
 
@@ -17,10 +17,10 @@ public class RestApiProvider : IRestApiProvider
 
     public void Dispose()
     {
-        _httpClient.Dispose();
+        _httpClient?.Dispose();
     }
 
-    public async Task<CallResult<T>> GetRequestAsync<T>(IRequestModel requestModel,
+    public async Task<CallResult<T>> GetRequestAsync<T>(Request requestModel,
         CancellationToken token = default)
     {
         var response = await _httpClient.GetAsync(
@@ -30,7 +30,12 @@ public class RestApiProvider : IRestApiProvider
         return await ParseResponse<T>(response);
     }
 
-    public async Task<CallResult<T>> PostRequestAsync<T>(IRequestModel requestModel,
+    public Task<CallResult<T>> GetRequestAsync<T>(PrivateRequest request, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<CallResult<T>> PostRequestAsync<T>(Request requestModel,
         CancellationToken token)
     {
         var requestContent = new StringContent(
@@ -44,6 +49,11 @@ public class RestApiProvider : IRestApiProvider
             cancellationToken: token);
 
         return await ParseResponse<T>(response);
+    }
+
+    public Task<CallResult<T>> PostRequestAsync<T>(PrivateRequest request, CancellationToken token)
+    {
+        throw new NotImplementedException();
     }
 
     private async Task<CallResult<T>> ParseResponse<T>(HttpResponseMessage response)

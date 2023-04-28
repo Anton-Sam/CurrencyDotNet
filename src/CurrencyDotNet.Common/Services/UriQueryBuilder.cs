@@ -1,29 +1,33 @@
 ﻿using CurrencyDotNet.Common.Interfaces;
 
-namespace CurrencyDotNet.Common.Services
+namespace CurrencyDotNet.Common.Services;
+
+public class UriQueryBuilder : IUriQueryBuilder
 {
-    /// <summary>
-    /// Creates a final endpoint for the Rest API
-    /// </summary>
-    public class UriQueryBuilder : IUriQueryBuilder
+    private List<string> _parts = new();
+
+    public UriQueryBuilder()
+    { }
+
+    public UriQueryBuilder(string query)
     {
-        private string _query;
+        _parts.Add(query);
+    }
 
-        /// <summary>
-        /// Returns final uri query for API endpoint
-        /// </summary>
-        /// <returns>Final uri query</returns>
-        public string GetQuery() => _query;
+    public string Build()
+    {
+        var query = string.Join("&", _parts);
+        _parts.Clear();
 
-        /// <summary>
-        /// Adds a new parameter to the end of the current request
-        /// </summary>
-        /// <param name="uriQueryPart">New patameter for current request</param>
-        /// <returns>This object</returns>
-        public UriQueryBuilder AddValue(string uriQueryPart)
-        {
-            _query = _query == null ? uriQueryPart : $"&{uriQueryPart}";
-            return this;
-        }    
+        return query;
+    }
+
+    public UriQueryBuilder Add(string paramName, string? paramValue)
+    {
+        if (!string.IsNullOrEmpty(paramName)
+            && !string.IsNullOrEmpty(paramValue))
+            _parts.Add(string.Concat(paramName, "=", paramValue));
+
+        return this;
     }
 }

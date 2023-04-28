@@ -1,10 +1,9 @@
 ﻿using CurrencyDotNet.Common.Services;
 
-namespace CurrencyDotNet.Common.Interfaces
+namespace CurrencyDotNet.Common.Interfaces;
+
+public interface IUriQueryBuilder
 {
-    public interface IUriQueryBuilder
-    {
-        string GetQuery();
-        UriQueryBuilder AddValue(string uriQueryPart);
-    }
+    string Build();
+    UriQueryBuilder Add(string paramName, string? paramValue);
 }
